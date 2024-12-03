@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next export",
+    "deploy": "gh-pages -d out"
   },
   "dependencies": {
     "eslint": "8.45.0",
@@ -18,5 +20,8 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sass": "^1.64.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.2.0"
   }
 }
