@@ -14,13 +14,18 @@ export default function Header() {
     const location = useLocation();
     const button = useRef(null);
 
+    // Close the menu on route change
     useEffect(() => {
-        if (isActive){ setIsActive(false)};
-    }, [location]);
+        if (isActive) {
+            setIsActive(false);
+        }
+    }, [location]); // Only listen to location changes
 
     useLayoutEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
-        gsap.to(button.current, {
+
+        // Scale button when scrolling
+        const animation = gsap.to(button.current, {
             scrollTrigger: {
                 trigger: document.documentElement,
                 start: 0,
@@ -38,11 +43,17 @@ export default function Header() {
                         duration: 0.25,
                         ease: 'power1.out',
                     });
-                    setIsActive(false);
+                    // Do not modify isActive here
                 },
             },
         });
-    }, []);
+
+        // Clean up on component unmount
+        return () => {
+            ScrollTrigger.kill();
+            animation.kill();
+        };
+    }, []); // Empty dependency array; only initialize once
 
     return (
         <>
@@ -58,7 +69,7 @@ export default function Header() {
                 <div className={styles.nav}>
                     <Magnetic>
                         <div className={styles.el}>
-                            <a href="/work">Work</a>
+                            <a style={{ textDecoration: "none",color:"white"}} href="/work">Work</a>
                             <div className={styles.indicator}></div>
                         </div>
                     </Magnetic>
@@ -78,9 +89,7 @@ export default function Header() {
             </div>
             <div ref={button} className={styles.headerButtonContainer}>
                 <Rounded
-                    onClick={() => {
-                        setIsActive(!isActive);
-                    }}
+                    onClick={() => setIsActive((prev) => !prev)} // Toggle menu state
                     className={`${styles.button}`}
                 >
                     <div
