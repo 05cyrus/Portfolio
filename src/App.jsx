@@ -22,21 +22,17 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter> {/* Wrap the entire app in BrowserRouter */}
-      <main className={styles.main}>
-        {isLoading ? (
-          <Preloader />
-        ) : (
-          <>
-            <Header />
-            <Landing />
-            <Description />
-            <Projects />
-            <SlidingImages />
-            <Contact />
-          </>
-        )}
-      </main>
+    <BrowserRouter>
+      {isLoading ? <Preloader /> : (
+        <>
+          <Header />
+          <Landing />
+          <Description />
+          <Projects />
+          <SlidingImages />
+          <Contact />
+        </>
+      )}
     </BrowserRouter>
   );
 }

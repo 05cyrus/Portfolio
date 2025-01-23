@@ -4,7 +4,9 @@
   "private": true,
   "dependencies": {
     "cra-template": "1.2.0",
+    "eslint-plugin-react": "^7.37.4",
     "framer-motion": "^11.14.4",
+    "function.prototype.name": "^1.1.8",
     "gsap": "^3.12.5",
     "locomotive-scroll": "^4.1.4",
     "react": "^19.0.0",
@@ -38,6 +40,9 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.14.5",
+    "eslint": "^8.57.1",
+    "eslint-plugin-react-hooks": "^5.1.0",
     "sass": "^1.83.0",
     "sass-loader": "^13.3.3"
   }
